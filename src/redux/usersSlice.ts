@@ -13,7 +13,7 @@ interface UsersState {
 }
 
 
-const initialstate: UsersState = {
+const initialState: UsersState = {
   users: [],
   loading: false,
   error: null,
@@ -29,3 +29,31 @@ export const fetchUsers = createAsyncThunk(
 );
 
 
+const usersSlice = createSlice ({
+  name: 'users',
+  initialState,
+  reducers: {
+    clearUsers: state => {
+      state.users = [];
+      state.page =1;
+    },
+  },
+  extraReducers: builder => {
+    builder
+      .addCase(fetchUsers.pending, state => {
+        state.loading = true;
+      })
+      .addCase(fetchUsers.fulfilled, (state, action) => {
+        state.users.push(...action.payload);
+        state.page += 1;
+        state.loading = false;
+      })
+      .addCase(fetchUsers.rejected, state => {
+        state.error = 'Failed to load users';
+        state.loading = false;
+      });
+  },
+});
+
+export const {clearUsers} = usersSlice.actions;
+export default usersSlice.reducer;
