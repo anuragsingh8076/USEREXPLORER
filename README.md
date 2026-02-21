@@ -16,17 +16,20 @@
 - AsyncStorage
 - React Navigation
 
+
 ## How to Run
 1. git clone repo
 2. npm install
 3. npx pod-install ios
 4. npx react-native run-android / run-ios
 
+
 ## Key Decisions
 - Redux Toolkit for predictable state
 - FlatList for performance
 - Persisted Redux store for offline restore
 - Separation of concerns (api, redux, screens)
+
 
 ## Improvements with More Time
 - Unit tests
