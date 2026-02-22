@@ -5,6 +5,7 @@ import {User} from '../types/User';
 import {fetchUsersApi} from '../api/usersApi';
 
 
+
 interface UsersState {
   users: User[];
   loading: boolean;
@@ -13,12 +14,14 @@ interface UsersState {
 }
 
 
+
 const initialState: UsersState = {
   users: [],
   loading: false,
   error: null,
   page: 1,
 };
+
 
 
 export const fetchUsers = createAsyncThunk(
